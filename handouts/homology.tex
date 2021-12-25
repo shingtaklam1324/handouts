@@ -1,0 +1,536 @@
+\documentclass{article}
+
+\usepackage{Style}
+
+\title{Homological algebra}
+\author{Shing Tak Lam}
+
+\begin{document}
+    \maketitle
+
+    \section{Motivation}
+
+    In many contexts, instead of considering individual modules, we have a series of modules. One example of this is in simplicial homology, where we have a sequence of free modules, and the homology groups are defined in terms of this sequence. We can generalise the constructions from simplicial homology to more general sequences of modules.
+
+    \section{Chain complexes}
+
+    \begin{definition}
+        [Chain complex] A chain complex $(M_\bullet, d_\bullet)$ of $R$-modules is a sequence of $R$-modules $M_i$, and $R$-module homomorphisms $d_i$
+
+        % https://q.uiver.app/?q=WzAsNSxbMiwwLCJNX2kiXSxbMywwLCJNX3tpLTF9Il0sWzEsMCwiTV97aSsxfSJdLFswLDAsIlxcY2RvdHMiXSxbNCwwLCJcXGNkb3RzIl0sWzMsMiwiZF97aSsyfSJdLFsyLDAsImRfe2krMX0iXSxbMCwxLCJkX2kiXSxbMSw0LCJkX3tpLTF9Il1d
+        \[\begin{tikzcd}
+            \cdots & {M_{i+1}} & {M_i} & {M_{i-1}} & \cdots
+            \arrow["{d_{i+2}}", from=1-1, to=1-2]
+            \arrow["{d_{i+1}}", from=1-2, to=1-3]
+            \arrow["{d_i}", from=1-3, to=1-4]
+            \arrow["{d_{i-1}}", from=1-4, to=1-5]
+        \end{tikzcd}\]
+
+        such that $d_i \circ d_{i+1} = 0$ for all $i$.
+    \end{definition}
+
+    Here, we allow a complex to be infinite in both directions, although `tails' of zeros are usually omitted.
+
+    \begin{definition}
+        [Boundary, differentials]
+
+        The homomorphisms $d_i$ are called boundary, or differentials.
+    \end{definition}
+
+    \begin{remark}
+        The condition that $d_i \circ d_{i+1} = 0$ is equivalent to $\im d_{i+1} \subseteq \ker d_i$.
+    \end{remark}
+
+    In fact, the case when equality holds is important enough that we give it a special name.
+
+    \subsection{Exact sequences}
+
+    \begin{definition}
+        [Exact]
+
+        A complex $(M_\bullet, d_\bullet)$ is exact at $M_i$ if $\im d_{i+1} = \ker d_i$. If  a complex is exact at all $M_i$, then we call it an exact sequence.
+    \end{definition}
+
+    \begin{example}
+        A complex
+
+                % https://q.uiver.app/?q=WzAsMyxbMCwwLCIwIl0sWzEsMCwiTCJdLFsyLDAsIk0iXSxbMCwxXSxbMSwyLCJcXGFscGhhIl1d
+        \[\begin{tikzcd}
+            0 & L & M
+            \arrow[from=1-1, to=1-2]
+            \arrow["\alpha", from=1-2, to=1-3]
+        \end{tikzcd}\]
+
+        is exact at $L$ if and only if $\alpha$ is injective, since exactness at $L$ is exactly $\ker\alpha = 0$, which is equivalent to $\alpha$ being injective.
+    \end{example}
+
+    \begin{example}
+        A complex
+
+        % https://q.uiver.app/?q=WzAsMyxbMCwwLCJNIl0sWzEsMCwiTiJdLFsyLDAsIjAiXSxbMCwxLCJcXGJldGEiXSxbMSwyXV0=
+        \[\begin{tikzcd}
+            M & N & 0
+            \arrow["\beta", from=1-1, to=1-2]
+            \arrow[from=1-2, to=1-3]
+        \end{tikzcd}\]
+
+        is exact at $N$ if and only if $\beta$ is surjective, since exactness at $N$ is exactly $\im\beta = N$.
+    \end{example}
+
+    \begin{definition}
+        [Short exact sequence]
+
+        A short exact sequence is an exact complex of the form
+
+        % https://q.uiver.app/?q=WzAsNSxbMiwwLCJNIl0sWzMsMCwiTiJdLFs0LDAsIjAiXSxbMCwwLCIwIl0sWzEsMCwiTCJdLFswLDEsIlxcYmV0YSJdLFsxLDJdLFszLDRdLFs0LDAsIlxcYWxwaGEiXV0=
+        \[\begin{tikzcd}
+            0 & L & M & N & 0
+            \arrow["\beta", from=1-3, to=1-4]
+            \arrow[from=1-4, to=1-5]
+            \arrow[from=1-1, to=1-2]
+            \arrow["\alpha", from=1-2, to=1-3]
+        \end{tikzcd}\]
+    \end{definition}
+
+    \begin{remark}
+        From the previous examples, we know that $\alpha$ must be injective, $\beta$ must be surjective, and we also have that $\im\alpha = \ker\beta$.
+    \end{remark}
+
+    \begin{example}
+        Let $\varphi : M \to N$ be a homomorphism. Then we have a short exact sequence
+
+        % https://q.uiver.app/?q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiXFxrZXJcXHZhcnBoaSJdLFsyLDAsIk0iXSxbMywwLCJcXGltXFx2YXJwaGkiXSxbNCwwLCIwIl0sWzAsMV0sWzEsMl0sWzIsM10sWzMsNF1d
+        \[\begin{tikzcd}
+            0 & \ker\varphi & M & \im\varphi & 0
+            \arrow[from=1-1, to=1-2]
+            \arrow[from=1-2, to=1-3]
+            \arrow[from=1-3, to=1-4]
+            \arrow[from=1-4, to=1-5]
+        \end{tikzcd}\]
+    \end{example}
+
+    \section{Homology}
+
+    \begin{definition}
+        [Homology]
+
+        The $i$-th homology of a complex $(M_\bullet, d_\bullet)$ of $R$-modules is the $R$-module
+
+        $$H_i(M_\bullet, d_\bullet) = \dfrac{\ker d_i}{\im d_{i+1}}$$
+    \end{definition}
+
+    \begin{remark}
+        $$H_i(M_\bullet, d_\bullet) = 0 \iff \im d_{i+1} = \ker d_i \iff \text{the complex } (M_\bullet, d_\bullet) \text{ is exact at } M_i$$
+
+    \end{remark}
+
+    Which gives us one way of thinking about the homology of a complex: it is the measure of the failure of the complex from being exact at $M_i$. Recall that the kernel can be considered to be the measure of how far a homomorphism is from being injective, and the cokernel a measure of how far a homomorphism is from being surjective, the homology can be considered as a generalisation of these.
+
+    \begin{example}
+        Consider the sequence
+
+        % https://q.uiver.app/?q=WzAsNCxbMCwwLCIwIl0sWzEsMCwiTV8xIl0sWzIsMCwiTV8wIl0sWzMsMCwiMCJdLFswLDFdLFsyLDNdLFsxLDIsIlxcdmFycGhpIl1d
+        \[\begin{tikzcd}
+            0 & {M_1} & {M_0} & 0
+            \arrow[from=1-1, to=1-2]
+            \arrow[from=1-3, to=1-4]
+            \arrow["\varphi", from=1-2, to=1-3]
+        \end{tikzcd}\]
+
+        Then $H_1(M_\bullet, d_\bullet) \cong \ker\varphi$, and $H_0(M_\bullet, d_\bullet) \cong \coker\varphi$.
+    \end{example}
+
+    \section{Diagram chase and the snake lemma}
+
+    One proof method in homological algebra is known as a diagram chase, where given a commutative diagram, we use it to construct (or prove the existence of) an object. One example of this is known as the snake lemma.
+
+    \begin{lemma}
+        [Snake lemma]
+
+        Consider two short exact sequences linked by homomorphisms.
+
+        % https://q.uiver.app/?q=WzAsMTAsWzAsMCwiMCJdLFsxLDAsIkxfMSJdLFsyLDAsIk1fMSJdLFszLDAsIk5fMSJdLFs0LDAsIjAiXSxbMCwxLCIwIl0sWzEsMSwiTF8wIl0sWzIsMSwiTV8wIl0sWzMsMSwiTl8wIl0sWzQsMSwiMCJdLFsxLDIsIlxcYWxwaGFfMSJdLFsyLDMsIlxcYmV0YV8xIl0sWzYsNywiXFxhbHBoYV8wIl0sWzcsOCwiXFxiZXRhXzAiXSxbMCwxXSxbNSw2XSxbMyw0XSxbOCw5XSxbMyw4LCJcXG51Il0sWzIsNywiXFxtdSJdLFsxLDYsIlxcbGFtYmRhIl1d
+        \[\begin{tikzcd}
+            0 & {L_1} & {M_1} & {N_1} & 0 \\
+            0 & {L_0} & {M_0} & {N_0} & 0
+            \arrow["{\alpha_1}", from=1-2, to=1-3]
+            \arrow["{\beta_1}", from=1-3, to=1-4]
+            \arrow["{\alpha_0}", from=2-2, to=2-3]
+            \arrow["{\beta_0}", from=2-3, to=2-4]
+            \arrow[from=1-1, to=1-2]
+            \arrow[from=2-1, to=2-2]
+            \arrow[from=1-4, to=1-5]
+            \arrow[from=2-4, to=2-5]
+            \arrow["\nu", from=1-4, to=2-4]
+            \arrow["\mu", from=1-3, to=2-3]
+            \arrow["\lambda", from=1-2, to=2-2]
+        \end{tikzcd}\]
+
+        Then we have an exact sequence
+
+        % https://q.uiver.app/?q=WzAsOCxbMCwwLCIwIl0sWzEsMCwiXFxrZXJcXGxhbWJkYSJdLFsyLDAsIlxca2VyXFxtdSJdLFszLDAsIlxca2VyXFxudSJdLFs0LDAsIlxcY29rZXJcXGxhbWJkYSJdLFs1LDAsIlxcY29rZXJcXG11Il0sWzYsMCwiXFxjb2tlclxcbnUiXSxbNywwLCIwIl0sWzAsMV0sWzEsMl0sWzIsM10sWzMsNCwiXFxkZWx0YSJdLFs0LDVdLFs1LDZdLFs2LDddXQ==
+        \[\begin{tikzcd}
+            0 & \ker\lambda & \ker\mu & \ker\nu & \coker\lambda & \coker\mu & \coker\nu & 0
+            \arrow[from=1-1, to=1-2]
+            \arrow[from=1-2, to=1-3]
+            \arrow[from=1-3, to=1-4]
+            \arrow["\delta", from=1-4, to=1-5]
+            \arrow[from=1-5, to=1-6]
+            \arrow[from=1-6, to=1-7]
+            \arrow[from=1-7, to=1-8]
+        \end{tikzcd}\]
+    \end{lemma}
+
+    \begin{remark}
+        Most of the homomorphisms in the above exact sequence are induced by the corresponding maps $\lambda$, $\mu$, $\nu$. The one which we need to construct is $\delta$.  Refer to the appendices for the construction of the unnamed maps.
+    \end{remark}
+
+    \begin{proof}
+        Consider the diagram below.
+        % https://q.uiver.app/?% https://q.uiver.app/?q=WzAsMjQsWzEsMSwiXFxrZXJcXGxhbWJkYSJdLFsyLDEsIlxca2VyXFxtdSJdLFszLDEsIlxca2VyXFxudSJdLFsxLDIsIkxfMSJdLFsyLDIsIk1fMSJdLFszLDIsIk5fMSJdLFsxLDMsIkxfMCJdLFsyLDMsIk1fMCJdLFszLDMsIk5fMCJdLFsxLDQsIlxcY29rZXJcXGxhbWJkYSJdLFsyLDQsIlxcY29rZXJcXG11Il0sWzMsNCwiXFxjb2tlclxcbnUiXSxbMSwwLCIwIl0sWzIsMCwiMCJdLFszLDAsIjAiXSxbMSw1LCIwIl0sWzIsNSwiMCJdLFszLDUsIjAiXSxbMCwxLCIwIl0sWzAsMiwiMCJdLFs0LDIsIjAiXSxbMCwzLCIwIl0sWzQsMywiMCJdLFs0LDQsIjAiXSxbMTIsMF0sWzE4LDBdLFsxMywxXSxbMCwxXSxbMSwyXSxbMTQsMl0sWzAsM10sWzEsNF0sWzIsNV0sWzE5LDNdLFszLDQsIlxcYWxwaGFfMSJdLFs0LDUsIlxcYmV0YV8xIl0sWzUsMjBdLFsyMSw2XSxbMyw2LCJcXGxhbWJkYSIsMl0sWzYsNywiXFxhbHBoYV8wIiwyXSxbNCw3LCJcXG11IiwyXSxbNyw4LCJcXGJldGFfMCIsMl0sWzUsOCwiXFxudSIsMl0sWzgsMjJdLFs2LDldLFs5LDEwXSxbNywxMF0sWzEwLDExXSxbOCwxMV0sWzExLDIzXSxbMTEsMTddLFsxMCwxNl0sWzksMTVdLFsyLDksIlxcZGVsdGEiLDIseyJjdXJ2ZSI6LTQsImNvbG91ciI6WzI0MCw2MCw2MF19LFsyNDAsNjAsNjAsMV1dXQ==
+        \[\begin{tikzcd}
+            & 0 & 0 & 0 \\
+            0 & \ker\lambda & \ker\mu & \ker\nu \\
+            0 & {L_1} & {M_1} & {N_1} & 0 \\
+            0 & {L_0} & {M_0} & {N_0} & 0 \\
+            & \coker\lambda & \coker\mu & \coker\nu & 0 \\
+            & 0 & 0 & 0
+            \arrow[from=1-2, to=2-2]
+            \arrow[from=2-1, to=2-2]
+            \arrow[from=1-3, to=2-3]
+            \arrow[from=2-2, to=2-3]
+            \arrow[from=2-3, to=2-4]
+            \arrow[from=1-4, to=2-4]
+            \arrow[from=2-2, to=3-2]
+            \arrow[from=2-3, to=3-3]
+            \arrow[from=2-4, to=3-4]
+            \arrow[from=3-1, to=3-2]
+            \arrow["{\alpha_1}", from=3-2, to=3-3]
+            \arrow["{\beta_1}", from=3-3, to=3-4]
+            \arrow[from=3-4, to=3-5]
+            \arrow[from=4-1, to=4-2]
+            \arrow["\lambda"', from=3-2, to=4-2]
+            \arrow["{\alpha_0}"', from=4-2, to=4-3]
+            \arrow["\mu"', from=3-3, to=4-3]
+            \arrow["{\beta_0}"', from=4-3, to=4-4]
+            \arrow["\nu"', from=3-4, to=4-4]
+            \arrow[from=4-4, to=4-5]
+            \arrow[from=4-2, to=5-2]
+            \arrow[from=5-2, to=5-3]
+            \arrow[from=4-3, to=5-3]
+            \arrow[from=5-3, to=5-4]
+            \arrow[from=4-4, to=5-4]
+            \arrow[from=5-4, to=5-5]
+            \arrow[from=5-4, to=6-4]
+            \arrow[from=5-3, to=6-3]
+            \arrow[from=5-2, to=6-2]
+            \arrow["\delta"', color={rgb,255:red,92;green,92;blue,214}, curve={height=-24pt}, from=2-4, to=5-2]
+        \end{tikzcd}\]
+
+        We will assume that the diagram above is exact at all points except $\ker\nu$ and $\coker\lambda$. The proof can be found in the appendices. We will construct the homomorphism $\delta$ like so.
+
+        % https://q.uiver.app/?q=WzAsMjQsWzEsMSwiXFxjZG90Il0sWzIsMSwiXFxjZG90Il0sWzMsMSwiXFxrZXJcXG51Il0sWzEsMiwiXFxjZG90Il0sWzIsMiwiTV8xIl0sWzMsMiwiTl8xIl0sWzEsMywiTF8wIl0sWzIsMywiTV8wIl0sWzMsMywiXFxidWxsZXQiXSxbMSw0LCJcXGNva2VyXFxsYW1iZGEiXSxbMyw0LCJcXGNkb3QiXSxbMCwxLCIwIl0sWzEsMCwiMCJdLFsyLDAsIjAiXSxbMywwLCIwIl0sWzAsMiwiMCJdLFswLDMsIjAiXSxbNCwyLCIwIl0sWzQsMywiMCJdLFs0LDQsIjAiXSxbMSw1LCIwIl0sWzIsNSwiMCJdLFszLDUsIjAiXSxbMiw0LCJcXGNkb3QiXSxbOSwyMCwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTAsMjIsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEwLDE5LCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDldLFs2LDcsIlxcYWxwaGFfMCJdLFsxNiw2LCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNSwzLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDYsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzExLDAsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMywiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTIsMCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTMsMSwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDQsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw3LCJcXG11Il0sWzcsOCwiXFxiZXRhXzAiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbOCwxMCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOCwxOCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwxNywiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw4LCJcXG51IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzQsNSwiXFxiZXRhXzEiXSxbMSwyLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDUsIlxcaW90YV9cXG51IiwyXSxbMTQsMiwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw1LCIiLDEseyJjdXJ2ZSI6LTEsImNvbG91ciI6WzI3MCw2MCw2MF19XSxbNSw0LCIiLDEseyJjdXJ2ZSI6LTEsImNvbG91ciI6WzI3MCw2MCw2MF19XSxbNCw3LCIiLDEseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMjcwLDYwLDYwXX1dLFs3LDYsIiIsMSx7ImN1cnZlIjotMSwiY29sb3VyIjpbMjcwLDYwLDYwXX1dLFs2LDksIiIsMSx7ImN1cnZlIjoxLCJjb2xvdXIiOlsyNzAsNjAsNjBdfV0sWzYsOSwicV9cXGxhbWJkYSJdLFsyMywyMSwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOSwyMywiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMjMsMTAsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsMjMsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+        \[\begin{tikzcd}
+            & 0 & 0 & 0 \\
+            0 & \cdot & \cdot & \ker\nu \\
+            0 & \cdot & {M_1} & {N_1} & 0 \\
+            0 & {L_0} & {M_0} & \bullet & 0 \\
+            & \coker\lambda & \cdot & \cdot & 0 \\
+            & 0 & 0 & 0
+            \arrow[dotted, no head, from=5-2, to=6-2]
+            \arrow[dotted, no head, from=5-4, to=6-4]
+            \arrow[dotted, no head, from=5-4, to=5-5]
+            \arrow[from=4-2, to=5-2]
+            \arrow["{\alpha_0}", from=4-2, to=4-3]
+            \arrow[dotted, no head, from=4-1, to=4-2]
+            \arrow[dotted, no head, from=3-1, to=3-2]
+            \arrow[dotted, no head, from=3-2, to=4-2]
+            \arrow[dotted, no head, from=2-1, to=2-2]
+            \arrow[dotted, no head, from=2-2, to=3-2]
+            \arrow[dotted, no head, from=1-2, to=2-2]
+            \arrow[dotted, no head, from=1-3, to=2-3]
+            \arrow[dotted, no head, from=2-2, to=2-3]
+            \arrow[dotted, no head, from=2-3, to=3-3]
+            \arrow[dotted, no head, from=3-2, to=3-3]
+            \arrow["\mu", from=3-3, to=4-3]
+            \arrow["{\beta_0}"', dotted, from=4-3, to=4-4]
+            \arrow[dotted, no head, from=4-4, to=5-4]
+            \arrow[dotted, no head, from=4-4, to=4-5]
+            \arrow[dotted, no head, from=3-4, to=3-5]
+            \arrow["\nu", dotted, from=3-4, to=4-4]
+            \arrow["{\beta_1}", from=3-3, to=3-4]
+            \arrow[dotted, no head, from=2-3, to=2-4]
+            \arrow["{\iota_\nu}"', from=2-4, to=3-4]
+            \arrow[dotted, no head, from=1-4, to=2-4]
+            \arrow[color={rgb,255:red,153;green,92;blue,214}, curve={height=-6pt}, from=2-4, to=3-4]
+            \arrow[color={rgb,255:red,153;green,92;blue,214}, curve={height=-6pt}, from=3-4, to=3-3]
+            \arrow[color={rgb,255:red,153;green,92;blue,214}, curve={height=6pt}, from=3-3, to=4-3]
+            \arrow[color={rgb,255:red,153;green,92;blue,214}, curve={height=-6pt}, from=4-3, to=4-2]
+            \arrow[color={rgb,255:red,153;green,92;blue,214}, curve={height=6pt}, from=4-2, to=5-2]
+            \arrow["{q_\lambda}", from=4-2, to=5-2]
+            \arrow[dotted, no head, from=5-3, to=6-3]
+            \arrow[dotted, no head, from=5-2, to=5-3]
+            \arrow[dotted, no head, from=5-3, to=5-4]
+            \arrow[dotted, no head, from=4-3, to=5-3]
+        \end{tikzcd}\]
+
+        Let $a \in \ker\nu$. Then let $b = \iota_\nu(a)$. $\beta_1$ is surjective, so let $c \in M_1$ such that $\beta_1(c) = b$. Let $d = \mu(c)$. Now $\beta_0(d) = \beta_0(\mu(c)) = \nu(\beta_1(c)) = \nu(b) = \nu(a) = 0$. So $d \in \ker\beta_0 = \im \alpha_0$. Thus, we have $e \in L_0$ such that $\alpha_0(e) = d$. Finally, let $f = q_\lambda(e)$.
+
+        We want to set $\delta(a) = f$. To do this, we need to show that this is independent of the choice of elements in the preimage. Since $\alpha_0$ is injective, $e$ is uniquely determined by $d$. On the other hand, we need to show that $\delta$ is independent of the choice of $c$. 
+        
+        Suppose we had $c'$ such that $\beta_1(c') = b$ as well. With the same argument as above, we obtain $d' = \mu(c')$, $e'$ such that $\alpha_0(e') = d'$ and $f' = q_\lambda(e')$.
+
+        % https://q.uiver.app/?q=WzAsOSxbMCwwLCIwIl0sWzEsMCwiTF8xIl0sWzIsMCwiTV8xIl0sWzEsMSwiTF8wIl0sWzIsMSwiXFxidWxsZXQiXSxbMywwLCJcXGJ1bGxldCJdLFs0LDAsIjAiXSxbMCwxLCIwIl0sWzEsMiwiXFxjb2tlclxcbGFtYmRhIl0sWzEsMywiXFxsYW1iZGEiXSxbMyw4LCJxX1xcbGFtYmRhIl0sWzMsNCwiXFxhbHBoYV8wIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzEsMiwiXFxhbHBoYV8xIl0sWzIsNSwiXFxiZXRhXzEiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbMiw0LCJcXG11IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzUsNiwiIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzAsMSwiIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywzLCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+        \[\begin{tikzcd}
+            0 & {L_1} & {M_1} & \bullet & 0 \\
+            0 & {L_0} & \bullet \\
+            & \coker\lambda
+            \arrow["\lambda", from=1-2, to=2-2]
+            \arrow["{q_\lambda}", from=2-2, to=3-2]
+            \arrow["{\alpha_0}", dotted, from=2-2, to=2-3]
+            \arrow["{\alpha_1}", from=1-2, to=1-3]
+            \arrow["{\beta_1}", dotted, from=1-3, to=1-4]
+            \arrow["\mu", dotted, from=1-3, to=2-3]
+            \arrow[dotted, from=1-4, to=1-5]
+            \arrow[dotted, no head, from=1-1, to=1-2]
+            \arrow[dotted, no head, from=2-1, to=2-2]
+        \end{tikzcd}\]
+
+        Here, note that $\beta_1(c - c') = \beta_1(c') - \beta_1(c) = b - b = 0$, so $c' - c \in \ker\beta_1 = \im \alpha_1$. Let $g \in L_1$ be such that $\alpha_1(g) = c - c'$. Then $\alpha_0(\lambda(g)) = \mu(\alpha_1(g)) = \mu(c - c') = \mu(c) - \mu(c') = d - d'$. As $\alpha(e - \lambda(g)) = d - (d - d') = d' = \alpha(e')$, we get that $e' = e - \lambda(g)$, so $e' - e = \lambda(g)$. With this, $f' - f = q_\lambda(e' - e) = q_\lambda(\lambda(g)) = 0$. So $\delta$ is well defined.
+
+        Now we will show that the sequence is exact at $\ker\nu$ and $\coker\lambda$. 
+        
+        To start off, let $a \in \ker\nu$ be such that $a \in \im \beta_2 = \beta_1 (\ker\mu)$. Then we have some $c \in M_1$ such that $\beta_1(c) = b = \iota_\nu(a)$, and $c \in \ker \mu$. This then means that (using the notation as in the definition of $\delta$), $d = \mu(c) = 0$. $\alpha_0$ is injective, so $e = 0$. Thus, $f = \delta(a) = 0$.
+
+        Conversely, suppose $a \in \ker\delta$. Let $b$, $c$, $d$, $e$, $f$ be as in the definition of $\delta$. Since $f = 0$, $e \in \ker q_\lambda = \im\lambda$, so we have some $g \in L_1$ such that $\lambda(g) = e$. Then $\beta_1(c - \alpha_1(g)) = \beta_1(c) - \beta_1(\alpha_1(g)) = \beta_1(c) = b$ by exactness at $M_1$. Furthermore, $\mu(c - \alpha_1(g)) = d - \mu(\alpha_1(g)) = d - \alpha_0(\lambda(g)) = d - \alpha_0(e) = 0$. So $b \in \beta_1(\ker\mu)$. Thus, the sequence is exact at $\ker \nu$.
+
+        Now let $a \in \ker \nu$. We want to show that $\alpha_{-1}(\delta(a)) = 0$. Let $b, c, d, e, f$ be as in the definition of $\delta$. Then $\alpha_{-1}(\delta(a)) = \alpha_{-1}(f) = \alpha_{-1}(q_\lambda(e)) = q_\mu(\alpha_0(e)) = q_\mu(d) = q_\mu(\mu(c)) = 0$. So $\im\delta \subseteq \ker\alpha_{-1}$.
+
+        Conversely, suppose $f \in \ker(\alpha_{-1})$.
+
+        % https://q.uiver.app/?q=WzAsNyxbMCwyLCJmIl0sWzEsMiwiMCJdLFswLDEsImUiXSxbMSwxLCJkIl0sWzEsMCwiYyJdLFsyLDAsImIiXSxbMiwxLCJcXG51KGIpIl0sWzAsMSwiXFxhbHBoYV97LTF9IiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFsyLDAsInFfXFxsYW1iZGEiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMiwzLCJcXGFscGhhXzAiXSxbMywxLCJxX1xcbXUiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbNCwzLCJcXG11Il0sWzQsNSwiXFxiZXRhXzEiXSxbNSw2LCJcXG51IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzMsNiwiXFxiZXRhXzAiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XV0=
+        \[\begin{tikzcd}
+            & c & b \\
+            e & d & {\nu(b)} \\
+            f & 0
+            \arrow["{\alpha_{-1}}", maps to, from=3-1, to=3-2]
+            \arrow["{q_\lambda}", two heads, from=2-1, to=3-1]
+            \arrow["{\alpha_0}", from=2-1, to=2-2]
+            \arrow["{q_\mu}", dotted, from=2-2, to=3-2]
+            \arrow["\mu", from=1-2, to=2-2]
+            \arrow["{\beta_1}", from=1-2, to=1-3]
+            \arrow["\nu", dotted, from=1-3, to=2-3]
+            \arrow["{\beta_0}", dotted, from=2-2, to=2-3]
+        \end{tikzcd}\]
+
+        Then as $q_\lambda$ is surjective, we have $e \in L_0$ such that $q_\lambda(e) = f$. Let $d = \alpha_0(e)$. Then $q_\mu(d) = q_\mu(\alpha_0(e)) = \alpha_{-1}(q_\lambda(e)) = \alpha_{-1}(f) = 0$. So $d \in \ker q_\mu = \im \mu$. So we have some $c \in M_1$ such that $\mu(c) = d$. Let $b = \beta_1(c)$. Then $\nu(b) = \nu(\beta_1(c)) = \beta_0(\mu(c)) = \beta_0(d) = \beta_0(\alpha_0(e)) = 0$. So $b \in \ker \nu$, and $b = \iota_\nu(a)$ for some $a \in \ker\nu$. By definition, we then have that $f = \delta(a)$. So the sequence is exact at $\coker\lambda$.
+    \end{proof}
+
+    There is another lemma which is also sometimes referred to as the Snake lemma, which is the following
+
+    \begin{lemma}
+        [Snake lemma, alternative version]
+
+        Suppose we have the exact complex
+
+        % https://q.uiver.app/?q=WzAsOCxbMSwwLCJMXzEiXSxbMiwwLCJNXzEiXSxbMywwLCJOXzEiXSxbMSwxLCJMXzAiXSxbMiwxLCJNXzAiXSxbMywxLCJOXzAiXSxbNCwwLCIwIl0sWzAsMSwiMCJdLFswLDMsIlxcbGFtYmRhIl0sWzEsNCwiXFxtdSJdLFsyLDUsIlxcbnUiXSxbMCwxLCJcXGFscGhhXzEiXSxbMSwyLCJcXGJldGFfMSJdLFszLDQsIlxcYWxwaGFfMCJdLFs0LDUsIlxcYmV0YV8wIl0sWzcsM10sWzIsNl1d
+        \[\begin{tikzcd}
+            & {L_1} & {M_1} & {N_1} & 0 \\
+            0 & {L_0} & {M_0} & {N_0}
+            \arrow["\lambda", from=1-2, to=2-2]
+            \arrow["\mu", from=1-3, to=2-3]
+            \arrow["\nu", from=1-4, to=2-4]
+            \arrow["{\alpha_1}", from=1-2, to=1-3]
+            \arrow["{\beta_1}", from=1-3, to=1-4]
+            \arrow["{\alpha_0}", from=2-2, to=2-3]
+            \arrow["{\beta_0}", from=2-3, to=2-4]
+            \arrow[from=2-1, to=2-2]
+            \arrow[from=1-4, to=1-5]
+        \end{tikzcd}\]
+
+        Then we have an exact sequence of the form
+
+        % https://q.uiver.app/?q=WzAsNixbMCwwLCJcXGtlclxcbGFtYmRhIl0sWzEsMCwiXFxrZXJcXG11Il0sWzIsMCwiXFxrZXJcXG51Il0sWzMsMCwiXFxjb2tlclxcbGFtYmRhIl0sWzQsMCwiXFxjb2tlclxcbXUiXSxbNSwwLCJcXGNva2VyXFxudSJdLFswLDFdLFsxLDJdLFsyLDMsIlxcZGVsdGEiXSxbMyw0XSxbNCw1XV0=
+        \[\begin{tikzcd}
+            \ker\lambda & \ker\mu & \ker\nu & \coker\lambda & \coker\mu & \coker\nu
+            \arrow[from=1-1, to=1-2]
+            \arrow[from=1-2, to=1-3]
+            \arrow["\delta", from=1-3, to=1-4]
+            \arrow[from=1-4, to=1-5]
+            \arrow[from=1-5, to=1-6]
+        \end{tikzcd}\]
+    \end{lemma}
+
+    The proof of this version is similar enough that it is not worth the effort to reproduce here.
+
+    The Snake lemma is very powerful, for example it is used to prove the Mayer-Vietoris theorem in simplicial homology. One, more immediate, consequence of the Snake lemma is the following:
+
+    \begin{proposition}
+        With the same setup as in the Snake lemma,
+        % https://q.uiver.app/?q=WzAsMTAsWzAsMCwiMCJdLFsxLDAsIkxfMSJdLFsyLDAsIk1fMSJdLFszLDAsIk5fMSJdLFs0LDAsIjAiXSxbMCwxLCIwIl0sWzEsMSwiTF8wIl0sWzIsMSwiTV8wIl0sWzMsMSwiTl8wIl0sWzQsMSwiMCJdLFsxLDIsIlxcYWxwaGFfMSJdLFsyLDMsIlxcYmV0YV8xIl0sWzYsNywiXFxhbHBoYV8wIl0sWzcsOCwiXFxiZXRhXzAiXSxbMCwxXSxbNSw2XSxbMyw0XSxbOCw5XSxbMyw4LCJcXG51Il0sWzIsNywiXFxtdSJdLFsxLDYsIlxcbGFtYmRhIl1d
+        \[\begin{tikzcd}
+            0 & {L_1} & {M_1} & {N_1} & 0 \\
+            0 & {L_0} & {M_0} & {N_0} & 0
+            \arrow["{\alpha_1}", from=1-2, to=1-3]
+            \arrow["{\beta_1}", from=1-3, to=1-4]
+            \arrow["{\alpha_0}", from=2-2, to=2-3]
+            \arrow["{\beta_0}", from=2-3, to=2-4]
+            \arrow[from=1-1, to=1-2]
+            \arrow[from=2-1, to=2-2]
+            \arrow[from=1-4, to=1-5]
+            \arrow[from=2-4, to=2-5]
+            \arrow["\nu", from=1-4, to=2-4]
+            \arrow["\mu", from=1-3, to=2-3]
+            \arrow["\lambda", from=1-2, to=2-2]
+        \end{tikzcd}\]
+
+        if $\mu$ is surjective and $\nu$ is injective, then $\lambda$ is surjective and $\nu$ is an isomorphism.
+    \end{proposition}
+
+    \begin{proof}
+        If $\mu$ is surjective, then $\coker\mu = 0$. Similarly, $\nu$ injective means that $\ker\nu = 0$. Putting this into the Snake lemma, we get
+
+        % https://q.uiver.app/?q=WzAsOCxbMCwwLCIwIl0sWzEsMCwiXFxrZXJcXGxhbWJkYSJdLFsyLDAsIlxca2VyXFxtdSJdLFszLDAsIjAiXSxbNCwwLCJcXGNva2VyXFxsYW1iZGEiXSxbNSwwLCIwIl0sWzYsMCwiXFxjb2tlclxcbnUiXSxbNywwLCIwIl0sWzAsMV0sWzEsMl0sWzIsM10sWzMsNCwiXFxkZWx0YSJdLFs0LDVdLFs1LDZdLFs2LDddXQ==
+        \[\begin{tikzcd}
+            0 & \ker\lambda & \ker\mu & 0 & \coker\lambda & 0 & \coker\nu & 0
+            \arrow[from=1-1, to=1-2]
+            \arrow[from=1-2, to=1-3]
+            \arrow[from=1-3, to=1-4]
+            \arrow["\delta", from=1-4, to=1-5]
+            \arrow[from=1-5, to=1-6]
+            \arrow[from=1-6, to=1-7]
+            \arrow[from=1-7, to=1-8]
+        \end{tikzcd}\]
+
+        Exactness implies that $\coker\lambda = 0$ and $\coker\nu = 0$, so $\lambda$ surjective and $\nu$ is an isomorphism.
+    \end{proof}
+
+    \begin{appendix}
+
+        \section{Maps in the Snake lemma}
+
+        As the explicit maps between the (co)kernels of the maps are not necessary to prove the Snake lemma, we omitted the details from the statement and proof. However, we will go through the constructions below.
+
+        \subsection{Vertical maps}
+
+        First, we will construct the vertical maps to make the exact sequence
+
+        % https://q.uiver.app/?q=WzAsNixbMCwwLCIwIl0sWzEsMCwiXFxrZXJcXGxhbWJkYSJdLFsyLDAsIkxfMSJdLFszLDAsIkxfMCJdLFs0LDAsIlxcY29rZXJcXGxhbWJkYSJdLFs1LDAsIjAiXSxbMCwxXSxbMSwyLCJcXGlvdGFfXFxsYW1iZGEiXSxbMiwzLCJcXGxhbWJkYSJdLFszLDQsInFfXFxsYW1iZGEiXSxbNCw1XV0=
+        \[\begin{tikzcd}
+            0 & \ker\lambda & {L_1} & {L_0} & \coker\lambda & 0
+            \arrow[from=1-1, to=1-2]
+            \arrow["{\iota_\lambda}", from=1-2, to=1-3]
+            \arrow["\lambda", from=1-3, to=1-4]
+            \arrow["{q_\lambda}", from=1-4, to=1-5]
+            \arrow[from=1-5, to=1-6]
+        \end{tikzcd}\]
+
+        For this, we just note that letting $\iota_\lambda : \ker\lambda \to L_1$ be the inclusion map, and $q_\lambda : L_0 \to \dfrac{L_0}{\im\lambda} \cong \coker\lambda$ be the quotient map, we get an exact sequence.
+
+        \subsection{Maps between kernels}
+
+        For this, we will need to construct the maps $\alpha_2$ and $\beta_2$ which makes diagram below commute.
+
+        % https://q.uiver.app/?q=WzAsOSxbMCwxLCJMXzEiXSxbMSwxLCJNXzEiXSxbMiwxLCJOXzEiXSxbMCwwLCJcXGtlclxcbGFtYmRhIl0sWzEsMCwiXFxrZXJcXG11Il0sWzIsMCwiXFxrZXJcXG51Il0sWzAsMiwiTF8wIl0sWzEsMiwiTV8wIl0sWzIsMiwiTl8wIl0sWzAsMSwiXFxhbHBoYV8xIl0sWzEsMiwiXFxiZXRhXzEiXSxbNiw3LCJcXGFscGhhXzAiXSxbNyw4LCJcXGJldGFfMCJdLFszLDAsIlxcaW90YV9cXGxhbWJkYSJdLFs0LDEsIlxcaW90YV9cXG11Il0sWzUsMiwiXFxpb3RhX1xcbnUiLDJdLFswLDYsIlxcbGFtYmRhIl0sWzEsNywiXFxtdSJdLFsyLDgsIlxcbnUiXSxbMyw0LCJcXGFscGhhXzIiXSxbNCw1LCJcXGJldGFfMiJdXQ==
+        \[\begin{tikzcd}
+            \ker\lambda & \ker\mu & \ker\nu \\
+            {L_1} & {M_1} & {N_1} \\
+            {L_0} & {M_0} & {N_0}
+            \arrow["{\alpha_1}", from=2-1, to=2-2]
+            \arrow["{\beta_1}", from=2-2, to=2-3]
+            \arrow["{\alpha_0}", from=3-1, to=3-2]
+            \arrow["{\beta_0}", from=3-2, to=3-3]
+            \arrow["{\iota_\lambda}", from=1-1, to=2-1]
+            \arrow["{\iota_\mu}", from=1-2, to=2-2]
+            \arrow["{\iota_\nu}"', from=1-3, to=2-3]
+            \arrow["\lambda", from=2-1, to=3-1]
+            \arrow["\mu", from=2-2, to=3-2]
+            \arrow["\nu", from=2-3, to=3-3]
+            \arrow["{\alpha_2}", from=1-1, to=1-2]
+            \arrow["{\beta_2}", from=1-2, to=1-3]
+        \end{tikzcd}\]
+
+        Since $\iota_\lambda$, $\iota_\mu$ and $\iota_\nu$ are inclusion maps, the natural choice would be $\alpha_2 = \alpha_1\vert_{\ker\lambda}$ and $\beta_2 = \beta_1 \vert_{\ker\mu}$. We now need to check that the functions have the correct codomains.
+
+        Let $v \in \ker\lambda$. Then, $\mu(\alpha_1(v)) = \alpha_0(\lambda_v) = \alpha_0(0) = 0$, so $\alpha_1(v) \in \ker\mu$. Similarly, we can check that $\beta_2$ is well defined. The final thing we need to check is the exactness of the sequence
+
+        % https://q.uiver.app/?q=WzAsNCxbMCwwLCIwIl0sWzEsMCwiXFxrZXJcXGxhbWJkYSJdLFsyLDAsIlxca2VyXFxtdSJdLFszLDAsIlxca2VyXFxudSJdLFswLDFdLFsxLDIsIlxcYWxwaGFfMiJdLFsyLDMsIlxcYmV0YV8yIl1d
+        \[\begin{tikzcd}
+            0 & \ker\lambda & \ker\mu & \ker\nu
+            \arrow[from=1-1, to=1-2]
+            \arrow["{\alpha_2}", from=1-2, to=1-3]
+            \arrow["{\beta_2}", from=1-3, to=1-4]
+        \end{tikzcd}\]
+
+        For this, we note that $\ker\alpha_2 = \{v \in \ker\lambda : \alpha_1(v) = 0\} = \ker\alpha_1 \cap \ker_\lambda$. By the exactness of
+        
+        % https://q.uiver.app/?q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiTF8xIl0sWzIsMCwiTV8xIl0sWzMsMCwiTl8xIl0sWzQsMCwiMCJdLFswLDFdLFsxLDIsIlxcYWxwaGFfMSJdLFsyLDMsIlxcYmV0YV8xIl0sWzMsNF1d
+        \[\begin{tikzcd}
+            0 & {L_1} & {M_1} & {N_1} & 0
+            \arrow[from=1-1, to=1-2]
+            \arrow["{\alpha_1}", from=1-2, to=1-3]
+            \arrow["{\beta_1}", from=1-3, to=1-4]
+            \arrow[from=1-4, to=1-5]
+        \end{tikzcd}\]
+
+        at $L_1$, we have that $\ker\alpha_1 = 0$. So $\ker \alpha_2 = 0$, and the sequence is exact at $\ker\lambda$.
+
+        Similarly, we have $\ker\beta_2 = \ker \beta_1 \cap \ker\mu$, by exactness of the sequence at $M_1$, this is $\im\alpha_1 \cap \ker\mu$. From this, we have that $\im \alpha_2 \subseteq \ker\beta_2$. Now let $w \in \ker\beta_2$. Then we have some $u \in L_1$ such that $\alpha_1(u) = w$, and $\mu(\alpha_1(u)) = 0$. We want to show that $u \in \ker\lambda$. For this, we need the exactness of
+
+        % https://q.uiver.app/?q=WzAsNSxbMSwwLCJMXzEiXSxbMiwwLCJNXzEiXSxbMSwxLCJMXzAiXSxbMiwxLCJNXzAiXSxbMCwxLCIwIl0sWzAsMSwiXFxhbHBoYV8xIl0sWzAsMiwiXFxsYW1iZGEiLDJdLFsxLDMsIlxcbXUiXSxbMiwzLCJcXGFscGhhXzAiLDJdLFs0LDJdXQ==
+        \[\begin{tikzcd}
+            & {L_1} & {M_1} \\
+            0 & {L_0} & {M_0}
+            \arrow["{\alpha_1}", from=1-2, to=1-3]
+            \arrow["\lambda"', from=1-2, to=2-2]
+            \arrow["\mu", from=1-3, to=2-3]
+            \arrow["{\alpha_0}"', from=2-2, to=2-3]
+            \arrow[from=2-1, to=2-2]
+        \end{tikzcd}\]
+
+        at $L_0$. $\alpha_0(\lambda(u)) = \mu(\alpha_1(u)) = 0$. By exactness at $L_0$, $\ker\alpha_0 = 0$, so $\lambda(u) = 0$, and $u \in \ker \lambda$. Thus, $\ker\beta_2 \subseteq \im \alpha_2$, and the sequence is exact.
+
+        \subsection{Maps between cokernels}
+
+        The idea here is pretty much the same. As the diagram commutes, this forces the maps that we can use, so all we have to do is to check that these are well defined. We need to construct maps $\alpha_{-1}$ and $\beta_{-1}$ such that the diagram
+
+        % https://q.uiver.app/?q=WzAsOSxbMCwwLCJMXzEiXSxbMSwwLCJNXzEiXSxbMiwwLCJOXzEiXSxbMCwxLCJMXzAiXSxbMSwxLCJNXzAiXSxbMiwxLCJOXzAiXSxbMCwyLCJcXGNva2VyXFxsYW1iZGEiXSxbMSwyLCJcXGNva2VyXFxtdSJdLFsyLDIsIlxcY29rZXJcXG51Il0sWzAsMSwiXFxhbHBoYV8xIl0sWzEsMiwiXFxiZXRhXzEiXSxbMyw0LCJcXGFscGhhXzAiXSxbNCw1LCJcXGJldGFfMCJdLFswLDMsIlxcbGFtYmRhIl0sWzEsNCwiXFxtdSJdLFsyLDUsIlxcbnUiXSxbMyw2LCJxX1xcbGFtYmRhIl0sWzQsNywicV9cXG11Il0sWzUsOCwicV9cXG51Il0sWzYsNywiXFxhbHBoYV97LTF9IiwyXSxbNyw4LCJcXGJldGFfey0xfSIsMl1d
+        \[\begin{tikzcd}
+            {L_1} & {M_1} & {N_1} \\
+            {L_0} & {M_0} & {N_0} \\
+            \coker\lambda & \coker\mu & \coker\nu
+            \arrow["{\alpha_1}", from=1-1, to=1-2]
+            \arrow["{\beta_1}", from=1-2, to=1-3]
+            \arrow["{\alpha_0}", from=2-1, to=2-2]
+            \arrow["{\beta_0}", from=2-2, to=2-3]
+            \arrow["\lambda", from=1-1, to=2-1]
+            \arrow["\mu", from=1-2, to=2-2]
+            \arrow["\nu", from=1-3, to=2-3]
+            \arrow["{q_\lambda}", from=2-1, to=3-1]
+            \arrow["{q_\mu}", from=2-2, to=3-2]
+            \arrow["{q_\nu}", from=2-3, to=3-3]
+            \arrow["{\alpha_{-1}}"', from=3-1, to=3-2]
+            \arrow["{\beta_{-1}}"', from=3-2, to=3-3]
+        \end{tikzcd}\]
+
+        commutes. Since $\coker\lambda \cong \dfrac{L_0}{\im \lambda}$, we will first construct a map $\tilde{\alpha}_{-1} : L_0 \to \coker\mu$, and then lift to a map $\alpha_{-1} : \coker\lambda \to \coker\mu$. The natural maps are $\tilde\alpha_{-1} = q_\mu \circ \alpha_0$ and $\tilde\beta_{-1} = q_{\nu}\circ \beta_0$. Now we need to show that these maps respect the quotient relation. Suppose $v_1 - v_2 \in \im\lambda$, then we need to show that $\tilde\alpha_{-1}(v_1) = \tilde\alpha_{-1}(v_2)$. Since $v_1 - v_2 \in \im \lambda$, we have a $w \in L_0$ such that $\lambda(w) = v_1 - v_2$. Then 
+        
+        $$\tilde\alpha_{-1}(v_1) - \tilde\alpha_{-1}(v_2) = \tilde\alpha_{-1}(v_1 - v_2) = \tilde\alpha_{-1}(\lambda(w)) = q_\mu(\alpha_0(\lambda(w))) = q_\mu(\mu(\alpha_1(w))) = 0$$
+
+        Thus, this gives us a map $\alpha_{-1} : \coker\lambda \to \coker \mu$. Similarly, we have a map $\beta_{-1} : \coker\mu \to \coker\nu$. Now we need to check the exactness of the sequence
+
+        % https://q.uiver.app/?q=WzAsNCxbMCwwLCJcXGNva2VyXFxsYW1iZGEiXSxbMSwwLCJcXGNva2VyXFxtdSJdLFsyLDAsIlxcY29rZXJcXG51Il0sWzMsMCwiMCJdLFswLDEsIlxcYWxwaGFfey0xfSJdLFsxLDIsIlxcYmV0YV97LTF9Il0sWzIsM11d
+        \[\begin{tikzcd}
+            \coker\lambda & \coker\mu & \coker\nu & 0
+            \arrow["{\alpha_{-1}}", from=1-1, to=1-2]
+            \arrow["{\beta_{-1}}", from=1-2, to=1-3]
+            \arrow[from=1-3, to=1-4]
+        \end{tikzcd}\]
+
+        Since $q_\lambda$ is surjective, and $q_\mu \circ \alpha_0 = \alpha_{-1}\circ q_\lambda$, we have that $\im \alpha_{-1} = q_\mu(\im \alpha_0) = q_\mu(\ker\beta_0)$. For any $w \in q_\mu(\ker\beta_0)$, we have some $u \in \ker(\beta_0)$ such that $q_\mu(u) = w$. Then $\beta_{-1}(w) = \beta_{-1}(q_\mu(u)) = q_\nu(\beta_0(u)) = q_\nu(0) = 0$.  So $w \in \ker(\beta_{-1})$. 
+
+        Conversely, suppose $w \in \ker(\beta_{-1})$. Then there exists $u \in M_0$ such that $q_\mu(u) = w$. We then have that $q_\nu(\beta_0(u)) = \beta_{-1}(q_\mu(u)) = 0$, so $\beta(u) \in \im\nu$. This means that we have some $t \in N_1$ such that $\beta_0(u) = \nu(t)$. Since $\beta_1$ is surjective, we have $s \in M_1$ such that $t = \beta_1(s)$. Then $\beta_0(u - \mu(s)) = \nu(t) - \beta_0(\mu(s)) = \nu(t) - \nu(\beta_1(s)) = 0$. So $u - \mu(s) \in \ker\beta_0$. Now $\mu(s) \in \im\mu$, so $q_\mu(\mu(s)) = 0$, and $q_\mu(u) = q_\mu(u - \mu(s)) = w$, and $w \in q_\mu(\ker \beta_0)$.
+
+        As $\im\beta_{-1} = q_\nu(\im\beta_0) = q_\nu(N_0) = \coker\nu$, the sequence is exact at $\coker\nu$.
+    \end{appendix}
+\end{document}

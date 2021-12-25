@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2021.7.12)  24 DEC 2021 00:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2021.7.12)  25 DEC 2021 15:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/shing/handouts/handouts/Sylow
-(/home/shing/handouts/handouts/Sylow.tex
+**/home/shing/handouts/handouts/homology
+(/home/shing/handouts/handouts/homology.tex
 LaTeX2e <2021-06-01> patch level 1
 L3 programming layer <2021-06-18> (/usr/local/texlive/2021/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/02/12 v1.4n Standard LaTeX document class
@@ -697,8 +697,27 @@ Package: thmdef-mdframed 2020/08/01 v0.72
 )
 \c@theorem=\count319
 \c@NumTodos=\count320
-) (./Sylow.aux)
-\openout1 = `Sylow.aux'.
+
+
+LaTeX Warning: You have requested package `Style',
+               but the package provides `quiver'.
+
+Package: quiver 2021/01/11 quiver
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
+\pgfdecoratedcompleteddistance=\dimen274
+\pgfdecoratedremainingdistance=\dimen275
+\pgfdecoratedinputsegmentcompleteddistance=\dimen276
+\pgfdecoratedinputsegmentremainingdistance=\dimen277
+\pgf@decorate@distancetomove=\dimen278
+\pgf@decorate@repeatstate=\count321
+\pgfdecorationsegmentamplitude=\dimen279
+\pgfdecorationsegmentlength=\dimen280
+)
+\tikz@lib@dec@box=\box71
+) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex))) (./homology.aux)
+\openout1 = `homology.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
@@ -720,16 +739,16 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
  (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count321
-\scratchdimen=\dimen274
-\scratchbox=\box71
-\nofMPsegments=\count322
-\nofMParguments=\count323
+\scratchcounter=\count322
+\scratchdimen=\dimen281
+\scratchbox=\box72
+\nofMPsegments=\count323
+\nofMParguments=\count324
 \everyMPshowfont=\toks49
-\MPscratchCnt=\count324
-\MPscratchDim=\dimen275
-\MPnumerator=\count325
-\makeMPintoPDFobject=\count326
+\MPscratchCnt=\count325
+\MPscratchDim=\dimen282
+\MPnumerator=\count326
+\makeMPintoPDFobject=\count327
 \everyMPtoPDFconversion=\toks50
 ) (/usr/local/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -745,14 +764,14 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/usr/local/texlive/2021/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count327
+\c@section@level=\count328
 )
 LaTeX Info: Redefining \ref on input line 8.
 LaTeX Info: Redefining \pageref on input line 8.
 LaTeX Info: Redefining \nameref on input line 8.
- (./Sylow.out) (./Sylow.out)
+ (./homology.out) (./homology.out)
 \@outlinefile=\write4
-\openout4 = `Sylow.out'.
+\openout4 = `homology.out'.
 
 
 *geometry* driver: auto-detecting
@@ -819,113 +838,93 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 16.
-Package hyperref Info: bookmark level for unknown theorem* defaults to 0 on input line 16.
+(mdframed)              on input line 18.
+Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 18.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 28.
-Package hyperref Info: bookmark level for unknown question* defaults to 0 on input line 28.
+(mdframed)              on input line 35.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 38.
+(mdframed)              on input line 41.
+Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 41.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 52.
-Package hyperref Info: bookmark level for unknown proposition* defaults to 0 on input line 52.
+(mdframed)              on input line 49.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 55.
+Package hyperref Info: bookmark level for unknown example defaults to 0 on input line 55.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 68.
+Package mdframed Info: Not enough space on this page on input line 78.
  [1
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Package mdframed Info: Not enough space on this page on input line 78.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 69.
-Package hyperref Info: bookmark level for unknown definition* defaults to 0 on input line 69.
+(mdframed)              on input line 81.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 77.
-Package hyperref Info: bookmark level for unknown example* defaults to 0 on input line 77.
+(mdframed)              on input line 96.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 83.
+(mdframed)              on input line 100.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 89.
-Package hyperref Info: bookmark level for unknown lemma* defaults to 0 on input line 89.
+(mdframed)              on input line 115.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 111.
+(mdframed)              on input line 123.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 130.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 148.
+Package hyperref Info: bookmark level for unknown lemma defaults to 0 on input line 148.
  [2]
-Package mdframed Info: Not enough space on this page on input line 112.
+Package mdframed Info: Not enough space on this page on input line 182.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 145.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 161.
+(mdframed)              on input line 185.
  [3]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 167.
+(mdframed)              on input line 332.
+ [4]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 177.
+(mdframed)              on input line 369.
+Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 369.
+ [5] [6] (./homology.aux)
 
+Package rerunfilecheck Warning: File `homology.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 208.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 208.
-
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 213.
-Package mdframed Info: Not enough space on this page on input line 214.
-[4]
-Package mdframed Info: Not enough space on this page on input line 214.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 223.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 249.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 257.
- [5]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 275.
-LaTeX Font Info:    Trying to load font information for TS1+iwonal on input line 281.
- (/usr/local/texlive/2021/texmf-dist/tex/latex/iwona/ts1iwonal.fd
-File: ts1iwonal.fd 2008/07/22 v0.995 font definition file for TS1/iwonal (MW)
-)
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 288.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 301.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 309.
- [6] (./Sylow.aux)
-Package rerunfilecheck Info: File `Sylow.out' has not changed.
-(rerunfilecheck)             Checksum: 4F5B3AF321AF2944DE4DDC1BEE071DA8;950.
+Package rerunfilecheck Info: Checksums for `homology.out':
+(rerunfilecheck)             Before: 62BD782D956A745F95F5FB88209B8F10;1583
+(rerunfilecheck)             After:  E910EC90CD1CE63AE0705BD9AAA27FBB;1290.
  ) 
 Here is how much of TeX's memory you used:
- 26166 strings out of 478517
- 488668 string characters out of 5849900
- 811837 words of memory out of 5000000
- 43617 multiletter control sequences out of 15000+600000
- 475631 words of font info for 98 fonts, out of 8000000 for 9000
+ 28541 strings out of 478517
+ 553740 string characters out of 5849900
+ 909584 words of memory out of 5000000
+ 45970 multiletter control sequences out of 15000+600000
+ 472786 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 137i,10n,144p,700b,1135s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/ts1-iwona.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/ex-iwona.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/sy-iwona.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/ec-iwona.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/rm-iwona.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/mi-iwona.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/nowacki/iwona/iwonal.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/nowacki/iwona/iwonali.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/nowacki/iwona/iwonam.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/nowacki/iwona/iwonami.pfb>
-Output written on Sylow.pdf (6 pages, 120043 bytes).
+ 137i,16n,144p,3162b,1283s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{subsection.5.1} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.5} has been referenced but does not exist, replaced by a fixed one
+
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/ec-iwona.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/sy-iwona.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/mi-iwona.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/rm-iwona.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/nowacki/iwona/iwonal.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/nowacki/iwona/iwonali.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/nowacki/iwona/iwonam.pfb>
+Output written on homology.pdf (6 pages, 113661 bytes).
 PDF statistics:
- 138 PDF objects out of 1000 (max. 8388607)
- 115 compressed objects within 2 object streams
- 36 named destinations out of 1000 (max. 500000)
- 77 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 153 PDF objects out of 1000 (max. 8388607)
+ 134 compressed objects within 2 object streams
+ 50 named destinations out of 1000 (max. 500000)
+ 101 words of extra memory for PDF output out of 10000 (max. 10000000)
 
