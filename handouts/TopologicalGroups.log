@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2021.7.12)  25 DEC 2021 15:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2021.7.12)  26 DEC 2021 13:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/shing/handouts/handouts/homology
-(/home/shing/handouts/handouts/homology.tex
+**/home/shing/handouts/handouts/TopologicalGroups
+(/home/shing/handouts/handouts/TopologicalGroups.tex
 LaTeX2e <2021-06-01> patch level 1
 L3 programming layer <2021-06-18> (/usr/local/texlive/2021/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/02/12 v1.4n Standard LaTeX document class
@@ -653,71 +653,71 @@ Package cleveref Info: `amsthm' support loaded on input line 3026.
 ) (/usr/local/texlive/2021/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
 \@enLab=\toks47
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip126
+\multirow@cntb=\count316
+\multirow@dima=\skip127
+\bigstrutjot=\dimen266
 ) (/usr/local/texlive/2021/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
  (/usr/local/texlive/2021/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count316
-\Gm@cntv=\count317
-\c@Gm@tempcnt=\count318
-\Gm@bindingoffset=\dimen266
-\Gm@wd@mp=\dimen267
-\Gm@odd@mp=\dimen268
-\Gm@even@mp=\dimen269
-\Gm@layoutwidth=\dimen270
-\Gm@layoutheight=\dimen271
-\Gm@layouthoffset=\dimen272
-\Gm@layoutvoffset=\dimen273
+\Gm@cnth=\count317
+\Gm@cntv=\count318
+\c@Gm@tempcnt=\count319
+\Gm@bindingoffset=\dimen267
+\Gm@wd@mp=\dimen268
+\Gm@odd@mp=\dimen269
+\Gm@even@mp=\dimen270
+\Gm@layoutwidth=\dimen271
+\Gm@layoutheight=\dimen272
+\Gm@layouthoffset=\dimen273
+\Gm@layoutvoffset=\dimen274
 \Gm@dimlist=\toks48
 )
 Package thmtools Info: Key `mdframed' (with value `style=mdbluebox')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmbluebox' on input line 69.
+(thmtools)             that uses `style=thmbluebox' on input line 71.
 Package thmtools Info: Key `mdframed' (with value `style=mdredbox')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmredbox' on input line 89.
+(thmtools)             that uses `style=thmredbox' on input line 91.
 Package thmtools Info: Key `mdframed' (with value `style=mdgreenbox')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmgreenbox' on input line 107.
+(thmtools)             that uses `style=thmgreenbox' on input line 109.
 Package thmtools Info: Key `mdframed' (with value `style=mdblackbox')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmblackbox' on input line 124.
+(thmtools)             that uses `style=thmblackbox' on input line 126.
 Package thmtools Info: Key `mdframed' (with value `style=mdpurplebox')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmpurplebox' on input line 141.
-Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 149.
+(thmtools)             that uses `style=thmpurplebox' on input line 143.
+Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 151.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/thmtools/thmdef-mdframed.sty
 Package: thmdef-mdframed 2020/08/01 v0.72
 )
-\c@theorem=\count319
-\c@NumTodos=\count320
-
-
-LaTeX Warning: You have requested package `Style',
-               but the package provides `quiver'.
-
-Package: quiver 2021/01/11 quiver
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+\c@theorem=\count320
+\c@NumTodos=\count321
+ (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 ) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen274
-\pgfdecoratedremainingdistance=\dimen275
-\pgfdecoratedinputsegmentcompleteddistance=\dimen276
-\pgfdecoratedinputsegmentremainingdistance=\dimen277
-\pgf@decorate@distancetomove=\dimen278
-\pgf@decorate@repeatstate=\count321
-\pgfdecorationsegmentamplitude=\dimen279
-\pgfdecorationsegmentlength=\dimen280
+\pgfdecoratedcompleteddistance=\dimen275
+\pgfdecoratedremainingdistance=\dimen276
+\pgfdecoratedinputsegmentcompleteddistance=\dimen277
+\pgfdecoratedinputsegmentremainingdistance=\dimen278
+\pgf@decorate@distancetomove=\dimen279
+\pgf@decorate@repeatstate=\count322
+\pgfdecorationsegmentamplitude=\dimen280
+\pgfdecorationsegmentlength=\dimen281
 )
 \tikz@lib@dec@box=\box71
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex))) (./homology.aux)
-\openout1 = `homology.aux'.
+) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex))) (./TopologicalGroups.aux)
+\openout1 = `TopologicalGroups.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
@@ -739,16 +739,16 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
  (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count322
-\scratchdimen=\dimen281
+\scratchcounter=\count323
+\scratchdimen=\dimen282
 \scratchbox=\box72
-\nofMPsegments=\count323
-\nofMParguments=\count324
+\nofMPsegments=\count324
+\nofMParguments=\count325
 \everyMPshowfont=\toks49
-\MPscratchCnt=\count325
-\MPscratchDim=\dimen282
-\MPnumerator=\count326
-\makeMPintoPDFobject=\count327
+\MPscratchCnt=\count326
+\MPscratchDim=\dimen283
+\MPnumerator=\count327
+\makeMPintoPDFobject=\count328
 \everyMPtoPDFconversion=\toks50
 ) (/usr/local/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -764,14 +764,14 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/usr/local/texlive/2021/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count328
+\c@section@level=\count329
 )
 LaTeX Info: Redefining \ref on input line 8.
 LaTeX Info: Redefining \pageref on input line 8.
 LaTeX Info: Redefining \nameref on input line 8.
- (./homology.out) (./homology.out)
+ (./TopologicalGroups.out) (./TopologicalGroups.out)
 \@outlinefile=\write4
-\openout4 = `homology.out'.
+\openout4 = `TopologicalGroups.out'.
 
 
 *geometry* driver: auto-detecting
@@ -838,93 +838,153 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 18.
-Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 18.
+(mdframed)              on input line 16.
+Package hyperref Info: bookmark level for unknown example defaults to 0 on input line 16.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 35.
+(mdframed)              on input line 22.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 41.
-Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 41.
+(mdframed)              on input line 32.
+Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 32.
+LaTeX Font Info:    Trying to load font information for TS1+iwonal on input line 37.
+ (/usr/local/texlive/2021/texmf-dist/tex/latex/iwona/ts1iwonal.fd
+File: ts1iwonal.fd 2008/07/22 v0.995 font definition file for TS1/iwonal (MW)
+)
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 49.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 55.
-Package hyperref Info: bookmark level for unknown example defaults to 0 on input line 55.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 68.
-Package mdframed Info: Not enough space on this page on input line 78.
+(mdframed)              on input line 57.
+Package mdframed Info: Not enough space on this page on input line 60.
  [1
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Package mdframed Info: Not enough space on this page on input line 78.
+Package mdframed Info: Not enough space on this page on input line 60.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 81.
+(mdframed)              on input line 67.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 96.
+(mdframed)              on input line 77.
+Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 77.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 100.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 115.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 123.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 130.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 148.
-Package hyperref Info: bookmark level for unknown lemma defaults to 0 on input line 148.
+(mdframed)              on input line 88.
  [2]
-Package mdframed Info: Not enough space on this page on input line 182.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 185.
+(mdframed)              on input line 132.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 144.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 150.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 158.
+Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 158.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 164.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 176.
+Package mdframed Info: Not enough space on this page on input line 177.
  [3]
+Package mdframed Info: Not enough space on this page on input line 177.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 332.
+(mdframed)              on input line 186.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 196.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 206.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 218.
  [4]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 369.
-Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 369.
- [5] [6] (./homology.aux)
+(mdframed)              on input line 230.
+Package hyperref Info: bookmark level for unknown corollary defaults to 0 on input line 230.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 238.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 249.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 259.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 266.
+Package hyperref Info: bookmark level for unknown lemma defaults to 0 on input line 266.
+\matrixtoks=\toks51
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 291.
+ [5]
+Package mdframed Info: Not enough space on this page on input line 294.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 307.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 317.
+\matrixtoks=\toks52
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 342.
+Package hyperref Info: bookmark level for unknown theorem defaults to 0 on input line 342.
+ [6]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 362.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 374.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 382.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 390.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 396.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 402.
+ [7]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 408.
+ [8] (./TopologicalGroups.aux)
 
-Package rerunfilecheck Warning: File `homology.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package rerunfilecheck Info: Checksums for `homology.out':
-(rerunfilecheck)             Before: 62BD782D956A745F95F5FB88209B8F10;1583
-(rerunfilecheck)             After:  E910EC90CD1CE63AE0705BD9AAA27FBB;1290.
+Package rerunfilecheck Info: File `TopologicalGroups.out' has not changed.
+(rerunfilecheck)             Checksum: F8754E13295ACA136DAE1FF97A54B0A9;1649.
  ) 
 Here is how much of TeX's memory you used:
- 28541 strings out of 478517
- 553740 string characters out of 5849900
- 909584 words of memory out of 5000000
- 45970 multiletter control sequences out of 15000+600000
- 472786 words of font info for 88 fonts, out of 8000000 for 9000
+ 27008 strings out of 478517
+ 512704 string characters out of 5849900
+ 829404 words of memory out of 5000000
+ 44388 multiletter control sequences out of 15000+600000
+ 488198 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 137i,16n,144p,3162b,1283s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{subsection.5.1} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.5} has been referenced but does not exist, replaced by a fixed one
-
-{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/ec-iwona.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/sy-iwona.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/mi-iwona.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/rm-iwona.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/nowacki/iwona/iwonal.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/nowacki/iwona/iwonali.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/nowacki/iwona/iwonam.pfb>
-Output written on homology.pdf (6 pages, 113661 bytes).
+ 137i,21n,144p,673b,1089s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/sy-iwona.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/ex-iwona.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/ec-iwona.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/ts1-iwona.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/rm-iwona.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/iwona/mi-iwona.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/nowacki/iwona/iwonal.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/nowacki/iwona/iwonali.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/nowacki/iwona/iwonam.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/nowacki/iwona/iwonami.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on TopologicalGroups.pdf (8 pages, 136304 bytes).
 PDF statistics:
- 153 PDF objects out of 1000 (max. 8388607)
- 134 compressed objects within 2 object streams
- 50 named destinations out of 1000 (max. 500000)
- 101 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 224 PDF objects out of 1000 (max. 8388607)
+ 197 compressed objects within 2 object streams
+ 87 named destinations out of 1000 (max. 500000)
+ 93 words of extra memory for PDF output out of 10000 (max. 10000000)
 

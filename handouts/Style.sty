@@ -48,6 +48,8 @@
 
 \usepackage{enumerate}
 
+\usepackage{multirow}
+
 \usepackage[a4paper, margin=1in]{geometry}
 
 \theoremstyle{definition}
@@ -181,11 +183,16 @@ style=thmbluebox,name=Theorem,numberwithin=section]{theorem}
 \DeclareMathOperator{\diam}{diam}
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Homeo}{Homeo}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Inn}{Inn}
 \DeclareMathOperator{\Char}{char}
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Or}{O}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\adj}{adj}
 \DeclareMathOperator{\ord}{ord}
 % \DeclareMathOperator{\Ker}{ker}
 \DeclareMathOperator{\im}{im}
@@ -286,7 +293,7 @@ style=thmbluebox,name=Theorem,numberwithin=section]{theorem}
 % - AndréC (https://tex.stackexchange.com/users/138900/andr%C3%A9c)
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{quiver}[2021/01/11 quiver]
+% \ProvidesPackage{quiver}[2021/01/11 quiver]
 
 % `tikz-cd` is necessary to draw commutative diagrams.
 \RequirePackage{tikz-cd}

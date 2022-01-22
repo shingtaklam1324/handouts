@@ -1,0 +1,412 @@
+\documentclass{article}
+
+\usepackage{Style}
+
+\title{Topological groups}
+\author{Shing Tak Lam}
+
+\begin{document}
+    \maketitle
+
+    \section{Motivation}
+
+    Sometimes, when we consider topological spaces, there is also an algebraic structure involved, and when these two interact, we can get some interesting results.
+
+    \begin{example}
+        [Circle]
+
+    Consider $S^1$ as the set of points in $\C$ with modulus $1$. That is, $z = e^{i\theta}$. Then multiplication in $S^1$ is given by $e^{i\theta} \cdot e^{i\phi} = e^{i(\theta + \phi)}$, and the inverse map is given by $(e^{i\theta})^-1 = e^{i(-\theta)}$. These maps are both continuous, so the topological and algebraic structures fit together nicely.
+    \end{example}
+
+    \begin{example}
+        [Real vector space]
+
+        Let $\R^n$ be given the Euclidean topology. Then addition and negation are both continuous maps.
+    \end{example}
+
+    This leads us naturally to the definition of a topological group.
+
+    \section{Topological groups}
+
+    \begin{definition}
+        [Topological group]
+
+        $G$ is a topological group if it is a topological space, and a group, where the maps
+
+        \begin{itemize}
+            \item $m : G \times G \to G$, multiplication in the group, and
+            \item $i : G \to G$, sending an element to it's inverse 
+        \end{itemize}
+
+        are both continuous.
+    \end{definition}
+
+    \subsection{Homomorphisms and subgroups}
+
+    When we have a new object, it often makes sense to study maps between these objects, as well as considering what subobjects would be. The definition of a topological group homomorphism is as we would expect.
+
+    \begin{definition}
+        [Topological group homomorphism]
+
+        Let $G$ and $H$ be topological groups. Then $\varphi : G \to H$ is a topological group homomorphism if $\varphi$ is a group homomorphism, and $\varphi$ is continuous.
+    \end{definition}
+
+    On the other hand, unlike in the situation for groups where bijective homomorphisms are isomorphisms, continuous bijections do not need to be homeomorphisms. Thus, for the definition of topological group isomorphism, we will need to be a bit more careful.
+
+    \begin{definition}
+        [Topological group isomorphism]
+
+        Let $G$ and $H$ be topological groups. Then $\varphi : G \to H$ is a topological group isomorphism if $\varphi$ is a group isomorphism, and $\varphi$ is a homeomorphism.
+    \end{definition}
+
+    Note that we could have required for $\varphi$ to be a group \textit{homomorphism} and a homeomorphism, which would have been equivalent.
+
+    For subobjects, we have two different notions coming from groups and topological spaces. What we require is simply the combination of both of them.
+
+    \begin{definition}
+        [Subgroup]
+
+        Let $G$ be a topological group, then a subset $H$ of $G$ is a topological subgroup of $G$ if it is a subgroup of $G$, and $H$ has the subspace topology.
+    \end{definition}
+
+    \subsection{Products and quotients}
+
+    In both group theory and topology, we have seen the notions of products and quotients, which leads us to consider whether these are well defined notions for topological groups. As it turns out, the answer is yes.
+
+    \begin{proposition}
+        [Product of topological groups]
+        Let $G, H$ be topological groups, let $G \times H$ is a topological group, with the group structure given by the product of groups, and the topology given by the product of topological spaces.
+    \end{proposition}
+
+    \begin{proof}
+        Let $m_G : G \times G \to G$ be the multiplication in $G$, and $m_H : H \times H \to H$ be the multiplication in $H$. Let $M : (G \times H) \times (G \times H) \to G \times H$ be the multiplication in the product group. Then $M((g_1, h_1), (g_2, h_2)) = (m_G(g_1, g_2), m_H(h_1, h_2))$. By properties of the product topology, to show that the map is continuous, suffices to show that $M_G = \pi_G \circ M$ and $M_H = \pi_H \circ M$ are continuous. Now we note that $M_G((g_1, h_1), (g_2, h_2)) = m_G(g_1, g_2) = m_G \circ (\pi_G \times \pi_G)$ is continuous.
+
+        For the inversion map, let $i_G : G \to G$ be the inverse in $G$, $i_H$ be the inverse map in $H$. Let $I$ be the inverse map in $G \times H$. Then $I = i_G \times i_H$ is continuous. Thus, $G \times H$ is a topological group.
+    \end{proof}
+
+    \begin{proposition}
+        [Quotients of topological groups]
+
+        Let $G$ be a topological group, and $N$ be a subgroup. Then $G/N$ is a topological group, with the group structure coming from the quotient group, and the topology coming from the quotient topology.
+    \end{proposition}
+
+    \begin{proof}
+        Let $m : G \times G \to G$ be the multiplication in $G$. Let $M : (G/N) \times (G/N) \to (G/N)$ be the multiplication in the quotient group. Let $q : G \to G/N$ be the quotient map (in both sense, as the two maps coincide). Let $T_g : G \to G$ be defined by $T_g(h) = gh$. Similarly, define $R_k : G/N \to G/N$. Then we have that
+
+        % https://q.uiver.app/?q=WzAsNCxbMCwwLCJHIl0sWzEsMCwiRyJdLFswLDEsIkcvTiJdLFsxLDEsIkcvTiJdLFswLDEsIlRfZyJdLFsyLDMsIlJfe3EoZyl9Il0sWzAsMiwicSIsMl0sWzEsMywicSIsMl1d
+        \[\begin{tikzcd}
+            G & G \\
+            {G/N} & {G/N}
+            \arrow["{T_g}", from=1-1, to=1-2]
+            \arrow["{R_{q(g)}}", from=2-1, to=2-2]
+            \arrow["q"', from=1-1, to=2-1]
+            \arrow["q"', from=1-2, to=2-2]
+        \end{tikzcd}\]
+
+        and as $q \circ T_g$ is continuous, $R_{q(g)}$ is continuous for all $g$. Then, let $U \subseteq G/N$ be open. We then have that
+
+        $$M^{-1}(U) = \bigcup_{k \in G/N}R_k^{-1}(U) = \bigcup_{g \in G} R_{q(g)}^{-1}(U)$$
+
+        is open, where the last equality holds by the surjectivity of $q$. 
+        
+        Now let $i : G \to G$ and $I : G/N \to G/N$ be the respective inverse maps. Then these satisfy
+
+        % https://q.uiver.app/?q=WzAsNCxbMCwwLCJHIl0sWzEsMCwiRyJdLFswLDEsIkcvTiJdLFsxLDEsIkcvTiJdLFsxLDMsInEiXSxbMCwyLCJxIl0sWzAsMSwiaSJdLFsyLDMsIkkiXV0=
+        \[\begin{tikzcd}
+            G & G \\
+            {G/N} & {G/N}
+            \arrow["q", from=1-2, to=2-2]
+            \arrow["q", from=1-1, to=2-1]
+            \arrow["i", from=1-1, to=1-2]
+            \arrow["I", from=2-1, to=2-2]
+        \end{tikzcd}\]
+
+        which means that $I$ must be continuous.
+    \end{proof}
+
+    \subsection{Closure}
+
+    One notion that we have in topology but not in group theory is the closure of a subset. As we will now show, this behaves as we would expect with respect to the group structure.
+
+    \begin{proposition}
+        Let $G$ be a topological group, $H$ be a subgroup. Then the closure $\Cl{H}$ is a topological subgroup of $G$. Furthermore, if $H$ is normal, then so is $\Cl{H}$.
+    \end{proposition}
+
+    \begin{proof}
+        
+    \end{proof}
+
+    \subsection{Homogeneity}
+
+    So far, we have seen that the topological structure and the group structures interact nicely and the constructions that we have seen will generalise. However, we haven't seen much justification as for why we should care about topological groups. One reason is that the addition group structure gives us information about the topology.
+
+    \begin{definition}
+        [Left translation]
+
+        Let $G$ be a topological group, $x \in G$. We define the left translation $L_x : G \to G$ by $L_x(g) = xg$.
+    \end{definition}
+
+    \begin{proposition}
+        $L_x$ is a homeomorphism.
+    \end{proposition}
+
+    \begin{proof}
+        Multiplication is continuous, and the inverse is $L_{x^{-1}}$ which is also continuous.
+    \end{proof}
+
+    \begin{remark}
+        We can define the right translation $R_x$ similarly, which is also a homeomorphism.
+    \end{remark}
+
+    What this means is that given $x, y \in G$, $L_{yx^{-1}}$ is a homeomorphism which sends $x$ to $y$, and this tells us that locally, $G$ must have the same topological structure everywhere. Often we will study the structure near the identity, and then use homogeneity to infer the structure elsewhere.
+
+    \begin{proposition}
+        Let $G$ be a topological group, $K$ be the connected component which contains $e$. Then $K$ is a closed normal subgroup of $G$.
+    \end{proposition}
+
+    \begin{proof}
+        $e \in K$ is given by definition. Suppose $a \in K$. Then $L_{a^{-1}}(K)$ is a connected component of $G$ which contains $a^{-1}a = e$. So $L_{a^{-1}}(K) = K$, and $a^{-1} = L_{a^{-1}}(e) \in K$.
+        
+        Now suppose $a, b \in K$. Then $L_a(K)$ is a connected component of $G$ which contains $aa^{-1} = e$. So $L_a(K) = K$. Then $ab = L_a(b) \in K$, so $K$ is a subgroup.
+
+        Let $g \in G$. Then $gKg^{-1} = L_g(R_{g^{-1}}(K))$ is a connected component that contains $e$. So it must be $K$. $K$ being closed follows from $K$ being a connected component.
+    \end{proof}
+
+    \begin{proposition}
+        Let $G$ be a connected topological group, $U$ be a neighbourhood of $e$. Then $U$ generates $G$.
+    \end{proposition}
+
+    \begin{proof}
+        Let $H = \langle U \rangle$ be the subgroup generated by $U$. For any $h \in H$, $L_h(U) = hU$ is an open subset of $H$ containing $h$. So $H$ is open.
+
+        Let $g \in G \backslash H$, and suppose we had $x \in gV \cap H$. Then there exists $v \in V$ such that $gv = x$. But $v \in H$, so $g = xv^{-1} \in H$. Contradiction. So $gV \cap H$ is empty. As this holds for all $g \in G \backslash H$, we must have that $G \backslash H$ is open. But $G$ is connected, so $G = H$. 
+    \end{proof}
+
+    \begin{remark}
+        For metric spaces, we can think of this in terms of an open ball around the identity. With Euclidean spaces, this makes sense intuitively as we have a scalar action which means we can just shrink things towards the origin. Similarly, for the circle $S^1$, it makes sense that we can just halve the value until we end up in the open ball.
+
+        We will show in \cref{sl_n_path_connected} that $\SL_n(\R)$ is in fact \textit{path} connected. Which means that for any $\epsilon > 0$, the set of all matrices which have distance less than $\epsilon$ from the identity, generates all of $\SL_n(\R)$.
+    \end{remark}
+
+    \section{Matrix groups}
+
+    In this section, we'll show that the matrix groups we are familiar with are all topological groups. First, we must put a topology on the matrices.
+
+    \begin{definition}
+        [Topology on $\M_n(\R)$]
+
+        Let $\M_n(\R)$ be the set of all $n \times n$ matrices over $\R$. Then we have an isomorphism (between vector spaces) between $\M_n(\R)$ and $\R^{n^2}$. This induces a topology on $\M_n(\R)$. In particular, if $A \in \M_n(\R)$, we can define the norm of $A$ to be
+
+        $$\norm{A} = \left(\sum_{i=1}^n\sum_{j=1}^n A_{ij}^2\right)^{1/2}$$
+    \end{definition}
+
+    With this, $\GL_n(\R)$, $\SL_n(\R)$, $\Or(n)$ and $\SO(n)$ can all be given the subspace topology.
+
+    \begin{proposition}
+        Multiplication in $\M_n(\R)$ is continuous.
+    \end{proposition}
+
+    \begin{proof}
+        Recall that if $X, Y, Z$ are topological spaces, $f : X \to Y \times Z$ is continuous if and only if $f_Y : X \to Y$, $f_Y = \pi_Y \circ f$, and $f_Z : X \to Z$, $f_Z = \pi_Z \circ f$ are continuous. Let $m : \M_n(\R) \times \M_n(\R) \to \M_n(\R)$ be the multiplication map. Then for $i, j \in \{1, \dots, n\}$, we have projection maps $\pi_{ij} : \M_n(\R) \to \R$ sending a matrix $A$ to the $ij$ entry of $A$. Thus, all we need to show is that $m_{ij} = \pi_{ij} \circ m$ is continuous. But
+
+        $$m_{ij}(A, B) = \sum_{k=1}^n A_{ik}B_{kj} = \sum_{k=1}^n \pi_{ik}(A)\pi_{kj}(B)$$
+
+        is continuous, as each $\pi_{ij}$ is continuous.
+    \end{proof}
+
+    \begin{proposition}
+        The inverse map in $\GL_n(\R)$ is continuous.
+    \end{proposition}
+
+    \begin{proof}
+        Let $\iota : \GL_n(\R) \to \GL_n(\R)$ be the inverse map. So we need to show that $\iota_{ij} = \pi_{ij} \circ \iota$ is continuous for all $i, j \in \{1, \dots, n\}$. But
+
+        $$\iota_{ij}(A) = \frac{1}{\det(A)}\adj(A)_{ij}$$
+
+        where $\det(A)$ and $\adj(A)_{ij}$ are polynomials in $\pi_{pq}(A)$, so continuous.
+    \end{proof}
+
+    \begin{corollary}
+        $\GL_n(\R)$, $\SL_n(\R)$, $\Or(n)$ and $\SO(n)$ are topological groups.
+    \end{corollary}
+
+    Now that we have some topological groups, let's analyse their properties as topological spaces.
+
+    \subsection{Topological properties of the general linear group}
+
+    \begin{proposition}
+        \label{gl_n_not_compact}
+        $\GL_n(\R)$ is not compact.
+    \end{proposition}
+
+    \begin{proof}
+        By Heine-Borel, we know that $\GL_n(\R)$ is compact if and only if it is closed and bounded. $\det : \M_n(\R) \to \R$ is continuous, so $\GL_n(\R) = \det^{-1}(\R\backslash\{0\})$ is open. $\M_n(\R) \cong \R^{n^2}$ is connected, so $\GL_n(\R)$ can't be closed.
+
+        In fact, as $\norm{2^k I} = 2^k\sqrt{n}$, we also have that $\GL_n(\R)$ is not bounded.
+    \end{proof}
+
+    \begin{proposition}
+        $\GL_n(\R)$ is not connected.
+    \end{proposition}
+
+    \begin{proof}
+        $\det^{-1}(\{x \in \R : x > 0\})$ and $\det^{-1}(\{x \in \R : x < 0\})$ separate $\GL_n(\R)$.
+    \end{proof}
+
+    When we find that a topological space is not connected, one natural question to ask is what is the connected components? In the case of $\GL_n(\R)$, the answer turns out to be rather simple. In fact, we can find the \textit{path} components of $\GL_n(\R)$.
+
+    \begin{proposition}
+        \label{gl_n_path_components}
+        $\GL_n(\R)$ has two path components, which are the matrices with positive and negative determinants.
+    \end{proposition}
+
+    To prove this, we will need a few lemmas.
+
+    \begin{lemma}
+        \label{row_col_add_diag_form}
+        Let $N(i, j, \lambda)$ be the matrix representing adding $\lambda \times (i\text{-th row/column})$ to the $j$-th row/column. Let $A \in \GL_n(\R)$. Then by the above operation, we can turn $A$ into a diagonal form
+
+        $$D = \mqty(\dmat{d_1,\ddots,d_n})$$
+
+        where $d_1, \dots, d_n$ are nonzero.
+    \end{lemma}
+
+    \begin{proof}
+        We will do this by recursion/induction on $n$. The base case $n = 1$ is trivial. Now we have two cases. If $a_{nn} \ne 0$, then we can use $N(i, j, \lambda)$ to clear out the rest of the $n$-th row and $n$-th column. This leaves us with a matrix of the form
+        
+        $$\left(\begin{array}{c c c | c}
+            a_{11} & \dots & a_{1, n-1} & \\
+            \vdots & & \vdots & 0 \\
+            a_{n-1, 1} & \dots & a_{n-1, n-1} &  \\
+            \hline
+            & 0 & & a_{n, n}
+        \end{array}\right)$$
+
+        and we can apply the recursion/induction hypothesis on the upper $n-1$ by $n-1$ matrix.
+
+        If $a_{nn} = 0$, then we note that there must be some $k$ such that $a_{kn} = 0$. Add row $k$ to row $n$, and then apply the above.
+    \end{proof}
+
+    \begin{lemma}
+        \label{products_set_path_connected}
+
+        Let $k \in \R$. Then the set $Z_n(k) = \{(x_1, \dots, x_n) \in \R^n : x_1\cdots x_n = k\}$ is path connected.
+    \end{lemma}
+
+    \begin{proof}
+        We split into two cases. In the case $k = 0$, everything in $Z_n(0)$ is connected to $0$ by a straight line. If $k \ne 0$, then all of the coordinates are nonzero. We will prove this by induction on $n$.
+
+        The case $n = 1$ is trivial, as $Z_1(k)$ is just $k$. Now suppose we have $(x_1, \dots, x_n), (y_1, \dots, y_n) \in Z(k)$. Then we note that 
+        
+        $$f(t) = \left(\left(\frac{y_1}{x_1}\right)^t x_1, \left(\frac{x_1}{y_1}\right)^tx_2, \dots, x_n\right)$$
+
+        is a path from $(x_1, x_2, \dots, x_n)$ to $\left(y_1, \dfrac{x_1x_2}{y_1}, \dots, x_n\right)$. Applying the induction hypothesis we have a path from $\left(\dfrac{x_1x_2}{y_1}, \dots, x_n\right)$ to $(y_2, \dots, y_n)$, since both of these are in $Z_{n-1}\left(\dfrac{k}{y_1}\right)$.
+    \end{proof}
+
+    \begin{lemma}
+        Let $D(k)$ be the set of matrices in $\GL_n(\R)$ with determinant $k$. Then $D(k)$ is path connected.
+    \end{lemma}
+
+    \begin{proof}
+        Fix $A \in D(k)$. We will first show that $N(i, j, \lambda)A$ (and by the same argument, $A N(i,j, \lambda)$) is path connected to $A$. First, $\det(N(i,j, \lambda)A) = \det(N(i,j,\lambda)) \det(A) = \det(A)$, so $N(i,j, \lambda) \in D(k)$. To connect the two, we will simply use the straight line segment, as $(1 - t)A + tN(i, j, \lambda)A = N(i, j, t\lambda)A$. By \cref{row_col_add_diag_form}, this means that we only need to consider diagonal matrices. Applying \cref{products_set_path_connected} we get a path between any two diagonal matrix with determinant $k$.
+    \end{proof}
+
+    This gives us an immediate corollary.
+
+    \begin{corollary}
+        \label{sl_n_path_connected}
+        $\SL_n(\R)$ is path connected.
+    \end{corollary}
+
+    \begin{proof}
+        $\SL_n(\R) = D(1)$
+    \end{proof}
+
+    and now we are ready to prove that $\GL_n(\R)$ has two path components.
+    
+    \begin{proof}
+        [Proof of \cref{gl_n_path_components}]
+
+        We note that 
+        
+        $$f(t) = \mqty(\dmat{t, 0, \ddots, 0}) \in D(t)$$
+
+        defines a path in $\GL_n(\R)$ between any two $D(k)$ with $k > 0$. So $\{A \in \GL_n(\R) : \det A > 0\}$ is path connected. Similarly, $\{A \in \GL_n(\R) : \det A < 0\}$ is also path connected. These two partition $\GL_n(\R)$, so we have two path components.
+    \end{proof}
+
+    \subsection{Topological properties of the orthogonal group}
+
+    Now we turn our attention to the orthogonal group.
+
+    \begin{theorem}
+        \label{orthogonal_group_is_compact}
+
+        $\Or(n)$ is compact.
+    \end{theorem}
+
+    \begin{proof}
+        We will show that $\Or(n)$ is closed and bounded, which by Heine-Borel implies that $\Or(n)$ is compact. Let $A \in \Or(n)$. Since $AA^T = I$, we have that $\sum_k a_{ik}a_{jk} = \delta_{ij}$. Then, for each $i, j$, we define $f_{ij} : M_n(\R) \to \R$ by
+
+        $$f_{ij}(A) = \sum_{k} a_{ik}a_{jk}$$
+
+        which is continuous. We then have that $\Or(n)$ is given by
+
+        $$\left(\bigcap_{i=1}^n \bigcap_{\substack{j=1 \\ j \ne i}}^n f^{-1}_{ij}(\{0\})\right) \cap \left(\bigcap_{i=1}^n f_{ii}^{-1}(\{1\})\right)$$
+
+        which is a finite intersection of closed sets, so closed. Furthermore, $f_ii(A) = 1$ means that $\sum_k a_{ik}^2 = 1$, which means that $a_{ik}^2 \le 1$ for all $i, k$. So $\Or(n)$ is bounded.
+    \end{proof}
+
+    We have an immediate corollary.
+
+    \begin{corollary}
+        $\SO(n)$ is compact.
+    \end{corollary}
+
+    \begin{proof}
+        $\SO(n)$ is the complement of $\det^{-1}(\{k \in \R : k < 0\})$, so $\SO(n)$ is a closed subset of a compact space, so compact.
+    \end{proof}
+
+    \section{Orbit spaces}
+
+    Recall the definition of a group action.
+
+    \begin{definition}
+        [Group action]
+
+        Let $X$ be a set, $G$ be a group. Then a group action is a homomorphism $G \to \Sym(X)$.
+    \end{definition}
+
+    With this, the orbits under the action form a partition of the set $X$. However, if $X$ is a topological space, and $G$ is a topological group, then we want to make sure that the action behaves well with the topology.
+
+    \begin{definition}
+        [Topological group action]
+
+        Let $X$ be a topological space, $G$ be a group. Then a topological group action is a homomorphism $G \to \Homeo(X)$, where the function $G \times X \to X$ defined by $(g, x) \mapsto g \vdot x$ is continuous.
+    \end{definition}
+
+    We call the set of orbits under such an action the orbit space.
+
+    \begin{definition}
+        [Orbit space]
+
+        The orbits under a group action form a partition of the set $X$, which we call the orbit space, and denote by $X/G$.
+    \end{definition}
+
+    \begin{example}
+        [Circle]
+
+        Considering $\Z$ as a subgroup of $\R$, we can make it into a topological group, with the discrete topology. Then, we can have $\Z$ act on $\R$ by $(n, x) \mapsto x + n$. The resulting quotient is $\R/\Z$ which we can show is homeomorphic to $S^1$.
+    \end{example}
+
+    \begin{example}
+        [Orthogonal group]
+
+        With their natural topologies, we can let $\Or(n)$ act on $S^{n-1}$, by $(A, x) \mapsto Ax$. The action of $\Or(n)$ on $S^{n-1}$ is transitive, so $S^{n-1}/\Or(n)$ is homeomorphic to a single point.
+    \end{example}
+
+    \begin{example}
+        [Projective space]
+
+        Now let $S^n$ be the $n$-sphere, and $C_2 = \{e, g\}$ the cyclic group with two elements. We can define the action of $C_2$ on $S^n$ by $(g, x) \mapsto -x$, the antipodal point of $x$. The quotient $S^n/C_2$ is known as the projective $n$-space, $P^n$.
+    \end{example}
+\end{document}
